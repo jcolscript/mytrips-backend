@@ -27,37 +27,19 @@ test('it should send a email with forgot password instructions', async ({assert,
     .send(forgotPayload)
     .end()
 
-    response.assertStatus(204);
+  const token = await user.tokens().first();
+  const recentEmail = Mail.pullRecent();
 
-    const recentEmail = Mail.pullRecent();
+  response.assertStatus(204);
 
-    assert.equal(recentEmail.message.to[0].address, forgotPayload.email);
+  assert.equal(recentEmail.message.to[0].address, forgotPayload.email);
+  assert.include(token.toJSON(), {
+    user_id: user.id,
+    type: 'forgot'
+  })
 
-    Mail.restore()
+  Mail.restore()
 });
 
-test('it should send a email with forgot password instructions', async ({assert, client}) => {
-  Mail.fake();
-
-  const forgotPayload = {
-    email: 'contato@mytrips.com',
-  }
-
-  const user = await Factory
-    .model('App/Models/User')
-    .create(forgotPayload)
-
-  const response = await client
-    .post('/forgot')
-    .send(forgotPayload)
-    .end()
-
-    response.assertStatus(204);
-
-    const recentEmail = Mail.pullRecent();
-
-    assert.equal(recentEmail.message.to[0].address, forgotPayload.email);
-
-    Mail.restore()
-});
+// chama uma rota /reset (token, nova senha, confirmacao?)
 
