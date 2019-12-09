@@ -18,16 +18,15 @@ class ForgotPasswordController {
 
       user.tokens().create({
         token,
-        type: 'forgot'
+        type: 'forgot_password'
       })
 
-      await Mail.send('emails.forgotpass', { name: user.name }, (message) => {
+      await Mail.send('emails.forgotpassword', { name: user.name, resetPassUrl }, (message) => {
         message
           .to(user.email)
           .from('contato@mytrips.com')
           .subject('MyTrips - Recuperação de senha')
       })
-
   }
 }
 
