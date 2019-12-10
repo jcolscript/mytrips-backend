@@ -12,7 +12,8 @@
   },
   "pre-commit": [
     "eslint",
-    "test"
+    "test",
+    "coverage"
   ],
   "keywords": [
     "adonisjs",
