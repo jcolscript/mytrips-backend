@@ -9,3 +9,11 @@ tmp
 
 # The development sqlite file
 database/*.sqlite
+
+#Other filess
+report/
+coverage/
+.nyc_output
+package-lock.json
+yarn-error.log
+yarn.lock
