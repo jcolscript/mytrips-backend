@@ -17,3 +17,7 @@ coverage/
 package-lock.json
 yarn-error.log
 yarn.lock
+.vscode
+.gitignore
+package.json
+yarn.lock
