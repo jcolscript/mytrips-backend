@@ -70,4 +70,4 @@ yarn eslint
 yarn coverage
 ```
 
-# v0.5.0 - draft
+# v0.1.0 - draft
