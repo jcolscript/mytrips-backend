@@ -11,6 +11,8 @@ class UserSchema extends Schema {
         .notNullable()
         .unique();
       table.string('password').notNullable();
+      table.string('birthdate').notNullable();
+      table.bigInteger('mobile_number').notNullable();
       table.timestamps();
     });
   }
