@@ -17,6 +17,16 @@ class User extends Model {
         userInstance.password = await Hash.make(userInstance.password);
       }
     });
+
+    this.addHook('beforeCreate', 'UuidHook.uuid');
+  }
+
+  static get primaryKey() {
+    return 'id';
+  }
+
+  static get incrementing() {
+    return false;
   }
 
   /**

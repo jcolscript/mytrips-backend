@@ -4,9 +4,9 @@ const Schema = use('Schema');
 class TokensSchema extends Schema {
   up() {
     this.create('tokens', table => {
-      table.increments();
+      table.uuid('id').primary();
       table
-        .integer('user_id')
+        .uuid('user_id')
         .unsigned()
         .references('id')
         .inTable('users');
