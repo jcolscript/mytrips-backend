@@ -33,7 +33,6 @@ docker run --name mytrips -p 5432:5432 -d -t kartoza/postgis
 
 #### Servidor local
 
-Sobe o serverless em modo offline http://localhost:3000
 Sobe a api em http://localhost:3333
 
 ```bash
