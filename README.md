@@ -28,7 +28,7 @@ yarn
 Usamos postgres como banco de dados.
 
 ```bash
-docker run --name mytripsdb -e "POSTGRES_PASSWORD=<your password></your>" -p 5432:5432 -d postgres
+docker run --name mytrips -p 5432:5432 -d -t kartoza/postgis
 ```
 
 #### Servidor local
