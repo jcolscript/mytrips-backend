@@ -26,5 +26,5 @@ Route.post('/registration', 'UserController.store').validator('User');
 
 Route.group(() => {
   // Trips
-  Route.post('/trips', 'TripController.store');
-}).middleware('auth');
+  Route.post('/trips', 'TripController.store').validator('Trip');
+}); // .middleware('auth');
