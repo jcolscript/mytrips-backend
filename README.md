@@ -18,7 +18,7 @@ Para atingir os objetivos, essa API deve ter:
 ```bash
 git clone https://github.com/jcolscript/mytrips-backend.git
 cd mytrips-backend
-yarn
+adonis install
 ```
 
 ##### Dependencias
