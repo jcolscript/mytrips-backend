@@ -1,4 +1,8 @@
 class Trip {
+  get validateAll() {
+    return true;
+  }
+
   get rules() {
     return {
       user_id: 'required|exists:users,id',

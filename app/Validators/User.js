@@ -1,4 +1,8 @@
 class User {
+  get validateAll() {
+    return true;
+  }
+
   get rules() {
     return {
       name: 'required',
