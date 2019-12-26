@@ -1,3 +1,5 @@
+const Antl = use('Antl');
+
 class User {
   get validateAll() {
     return true;
@@ -11,6 +13,10 @@ class User {
       birthdate: 'required',
       mobile_number: 'required',
     };
+  }
+
+  get messages() {
+    return Antl.list('validation');
   }
 }
 

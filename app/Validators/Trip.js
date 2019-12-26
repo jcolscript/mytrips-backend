@@ -1,3 +1,5 @@
+const Antl = use('Antl');
+
 class Trip {
   get validateAll() {
     return true;
@@ -14,6 +16,10 @@ class Trip {
       lat: 'required',
       lng: 'required',
     };
+  }
+
+  get messages() {
+    return Antl.list('validation');
   }
 }
 
