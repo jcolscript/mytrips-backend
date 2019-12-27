@@ -24,7 +24,8 @@ Route.post('/forgot', 'ForgotPasswordController.store').validator('Forgot');
 Route.post('/reset', 'ResetPasswordController.store').validator('Reset');
 Route.post('/registration', 'UserController.store').validator('User');
 
+// Trips
 Route.group(() => {
-  // Trips
+  Route.get('/trips', 'TripController.index');
   Route.post('/trips', 'TripController.store').validator('Trip');
-}); // .middleware('auth');
+}).middleware('auth');

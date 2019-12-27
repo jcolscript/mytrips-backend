@@ -15,7 +15,28 @@ class TripController {
    * @param {object} ctx
    * @param {Request} ctx.request
    * @param {Response} ctx.response
+   * @param {Auth} ctx.auth
    */
+
+  async index({ auth, response }) {
+    try {
+      const trips = await Trip.query()
+        .where('user_id', auth.current.user.id)
+        .fetch();
+
+      return response.status(200).json({
+        status: 'success',
+        data: trips,
+      });
+    } catch (error) {
+      return response.status(400).json({
+        status: 'error',
+        message:
+          'There was a problem responding the trip, please try again later.',
+      });
+    }
+  }
+
   async store({ request, response }) {
     const tripData = request.only([
       'user_id',
