@@ -27,5 +27,6 @@ Route.post('/registration', 'UserController.store').validator('User');
 // Trips
 Route.group(() => {
   Route.get('/trips', 'TripController.index');
+  Route.get('/trips/:id', 'TripController.show');
   Route.post('/trips', 'TripController.store').validator('Trip');
 }).middleware('auth');

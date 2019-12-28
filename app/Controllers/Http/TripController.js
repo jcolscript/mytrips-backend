@@ -18,7 +18,7 @@ class TripController {
    * @param {Auth} ctx.auth
    */
 
-  async index({ auth, response }) {
+  async index({ response, auth }) {
     try {
       const trips = await Trip.query()
         .where('user_id', auth.current.user.id)
@@ -27,6 +27,23 @@ class TripController {
       return response.status(200).json({
         status: 'success',
         data: trips,
+      });
+    } catch (error) {
+      return response.status(400).json({
+        status: 'error',
+        message:
+          'There was a problem responding the trip, please try again later.',
+      });
+    }
+  }
+
+  async show({ response, params }) {
+    try {
+      const trip = await Trip.find(params.id);
+
+      return response.status(200).json({
+        status: 'success',
+        data: trip,
       });
     } catch (error) {
       return response.status(400).json({
