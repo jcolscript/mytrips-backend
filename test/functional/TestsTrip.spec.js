@@ -67,3 +67,20 @@ test('it should be able to show single trip', async ({ assert, client }) => {
   assert.deepEqual(response.body.data.destination_name, trip.destination_name);
   assert.deepEqual(response.body.data.user_id, user.id);
 });
+
+test('it should be able to delete single trip', async ({ assert, client }) => {
+  const user = await Factory.model('App/Models/User').create();
+  const trip = await Factory.model('App/Models/Trip').create();
+
+  await user.trips().save(trip);
+
+  const response = await client
+    .delete(`/trips/${trip.id}`)
+    .loginVia(user, 'jwt')
+    .end();
+
+  response.assertStatus(200);
+  assert.equal(response.body.status, 'success');
+  assert.deepEqual(response.body.data.destination_name, trip.destination_name);
+  assert.deepEqual(response.body.data.user_id, user.id);
+});

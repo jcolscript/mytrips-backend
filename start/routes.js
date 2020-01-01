@@ -29,4 +29,5 @@ Route.group(() => {
   Route.get('/trips', 'TripController.index');
   Route.get('/trips/:id', 'TripController.show');
   Route.post('/trips', 'TripController.store').validator('Trip');
+  Route.delete('/trips/:id', 'TripController.delete');
 }).middleware('auth');
