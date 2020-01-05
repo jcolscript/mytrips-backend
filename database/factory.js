@@ -43,3 +43,16 @@ Factory.blueprint('App/Models/Trip', (faker, i, data = {}) => {
     ...data,
   };
 });
+
+// Factory.blueprint('App/Models/Event', (faker, i, data = {}) => {
+//   return {
+//     destination_name: faker.city(),
+//     destination_city: faker.city(),
+//     destination_state: faker.province({ full: true }),
+//     description: faker.sentence(),
+//     photo_reference: faker.wp7_anid(),
+//     lat: faker.latitude({ fixed: 7 }),
+//     lng: faker.longitude({ fixed: 7 }),
+//     ...data,
+//   };
+// });
