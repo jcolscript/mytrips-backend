@@ -9,7 +9,7 @@ class EventSchema extends Schema {
         .uuid('trip_id')
         .unsigned()
         .references('id')
-        .inTable('trip')
+        .inTable('trips')
         .onUpdate('CASCADE')
         .onDelete('SET NULL');
       table.string('name').notNullable();
@@ -21,8 +21,20 @@ class EventSchema extends Schema {
       table.string('reservation_code');
       table.text('notes');
       table
-        .enu('type', ['flight', 'lodging', 'car_rental', 'meeting'])
-        .defaultsTo('map');
+        .enu('type', [
+          'flight',
+          'lodging',
+          'car_rental',
+          'meeting',
+          'activity',
+          'bus',
+          'train',
+          'restaurant',
+          'tour',
+          'theater',
+          'cinema',
+        ])
+        .notNullable();
       table.decimal('lat', 9, 6);
       table.decimal('lng', 9, 6);
       table.timestamps();

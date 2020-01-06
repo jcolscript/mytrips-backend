@@ -31,3 +31,11 @@ Route.group(() => {
   Route.post('/trips', 'TripController.store').validator('Trip');
   Route.delete('/trips/:id', 'TripController.delete');
 }).middleware('auth');
+
+// Events
+Route.group(() => {
+  Route.get('/events', 'EventController.index');
+  Route.get('/events/:id', 'EventController.show');
+  Route.post('/events', 'EventController.store'); // .validator('Event');
+  Route.delete('/events/:id', 'EventController.delete');
+}).middleware('auth');

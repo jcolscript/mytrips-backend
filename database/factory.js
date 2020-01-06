@@ -44,15 +44,18 @@ Factory.blueprint('App/Models/Trip', (faker, i, data = {}) => {
   };
 });
 
-// Factory.blueprint('App/Models/Event', (faker, i, data = {}) => {
-//   return {
-//     destination_name: faker.city(),
-//     destination_city: faker.city(),
-//     destination_state: faker.province({ full: true }),
-//     description: faker.sentence(),
-//     photo_reference: faker.wp7_anid(),
-//     lat: faker.latitude({ fixed: 7 }),
-//     lng: faker.longitude({ fixed: 7 }),
-//     ...data,
-//   };
-// });
+Factory.blueprint('App/Models/Event', (faker, i, data = {}) => {
+  return {
+    name: faker.city(),
+    description: faker.city(),
+    photo_reference: faker.wp7_anid(),
+    start_date: faker.date(),
+    end_date: faker.date(),
+    location: faker.address(),
+    reservation_code: faker.string(),
+    notes: faker.paragraph(),
+    lat: faker.latitude({ fixed: 7 }),
+    lng: faker.longitude({ fixed: 7 }),
+    ...data,
+  };
+});
