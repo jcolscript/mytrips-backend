@@ -30,12 +30,12 @@ Route.group(() => {
   Route.get('/trips/:id', 'TripController.show');
   Route.post('/trips', 'TripController.store').validator('Trip');
   Route.delete('/trips/:id', 'TripController.delete');
+  Route.get('/trips/:id/events', 'EventController.index'); // .validator('Event');
+  Route.post('/trips/:id/events', 'EventController.store'); // .validator('Event');
 }).middleware('auth');
 
 // Events
 Route.group(() => {
-  Route.get('/events', 'EventController.index');
   Route.get('/events/:id', 'EventController.show');
-  Route.post('/events', 'EventController.store'); // .validator('Event');
   Route.delete('/events/:id', 'EventController.delete');
 }).middleware('auth');

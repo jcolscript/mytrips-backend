@@ -9,8 +9,28 @@ const Event = use('App/Models/Event');
  * Resourceful controller for interacting with events
  */
 class EventController {
-  // async index({ request, response, view }) {}
-  async store({ request, response }) {
+  async index({ params, response }) {
+    try {
+      const tripId = params.id;
+      const events = await Event.query()
+        .where('trip_id', tripId)
+        .fetch();
+
+      return response.status(200).json({
+        status: 'success',
+        data: events,
+      });
+    } catch (error) {
+      return response.status(400).json({
+        status: 'error',
+        message:
+          'There was a problem responding the events, please try again later.',
+      });
+    }
+  }
+
+  async store({ params, request, response }) {
+    const tripId = params.id;
     const eventData = request.only([
       'name',
       'description',
@@ -23,10 +43,9 @@ class EventController {
       'lat',
       'lng',
       'type',
-      'trip_id',
     ]);
 
-    const event = await Event.create(eventData);
+    const event = await Event.create({ ...eventData, trip_id: tripId });
 
     return response.status(201).json({
       status: 'success',

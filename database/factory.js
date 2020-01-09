@@ -54,6 +54,7 @@ Factory.blueprint('App/Models/Event', (faker, i, data = {}) => {
     location: faker.address(),
     reservation_code: faker.string(),
     notes: faker.paragraph(),
+    type: 'flight',
     lat: faker.latitude({ fixed: 7 }),
     lng: faker.longitude({ fixed: 7 }),
     ...data,

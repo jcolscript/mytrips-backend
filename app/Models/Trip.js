@@ -7,16 +7,20 @@ class Trip extends Model {
     this.addHook('beforeCreate', 'UuidHook.uuid');
   }
 
-  user() {
-    return this.belongsTo('App/Models/User');
-  }
-
   static get primaryKey() {
     return 'id';
   }
 
   static get incrementing() {
     return false;
+  }
+
+  user() {
+    return this.belongsTo('App/Models/User');
+  }
+
+  events() {
+    return this.hasMany('App/Models/Event');
   }
 }
 
